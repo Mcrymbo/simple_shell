@@ -6,7 +6,7 @@
  * @src: soirce pointer
  * @size: size of dest pointer
  */
-void _memcpy(void *dest, void *src, unsigned int size)
+void _memcpy(void *dest, const void *src, unsigned int size)
 {
 	char *dst = (char *)dest;
 	char *src_ptr = (char *)src;

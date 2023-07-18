@@ -8,7 +8,7 @@
  */
 int is_cdir(char *path, int *i)
 {
-	if (path[*i] == ":")
+	if (path[*i] == ':')
 		return (1);
 	while (path[*i] && path[*i] != ':')
 		*i += 1;
@@ -29,13 +29,13 @@ char *_which(char *command, char **_environ)
 	struct stat st;
 	char  *dir, *tkn, *path, *path_ptr;
 
-	path = getenv("PATH", _environ);
+	path = _getenv("PATH", _environ);
 	if (path)
 	{
 		i = 0;
 		path_ptr = _strdup(path);
 		len_cm = _strlen(command);
-		tkn = _strtok(ptr_path, ":");
+		tkn = strtok(path_ptr, ":");
 		while (tkn)
 		{
 			if (is_cdir(path, &i))
@@ -55,14 +55,14 @@ char *_which(char *command, char **_environ)
 				return (dir);
 			}
 			free(dir);
-			tkn = _strtok(NULL, ":");
+			tkn = strtok(NULL, ":");
 		}
 		free(path_ptr);
 		if (stat(command, &st) == 0)
 			return (command);
 		return (NULL);
 	}
-	if (command[0] == "/")
+	if (command[0] == '/')
 	{
 		if (stat(command, &st) == 0)
 			return (command);
@@ -78,6 +78,10 @@ char *_which(char *command, char **_environ)
  */
 int check_error_cmd(char *dir, shell_d *data)
 {
+	if (dir == NULL)
+	{
+		return (1);
+	}
 	if (_strcmp(data->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) != -1)
@@ -115,7 +119,7 @@ int _executables(shell_d *data)
 		{
 			if (input[i + 1] == '.')
 				return (0);
-			if (inpu[i + 1] == '/')
+			if (input[i + 1] == '/')
 				continue;
 			else
 				break;
@@ -134,6 +138,7 @@ int _executables(shell_d *data)
 		return (0);
 	if (stat(input + i, &st) == 0)
 		return (i);
+	return (-1);
 }
 
 /**
@@ -148,14 +153,14 @@ int cmd_exec(shell_d *data)
 	char *dir;
 	pid_t wait_pid;
 	int exec;
-	(void) wait_pit
+	(void) wait_pid;
 
 	exec = _executables(data);
 	if (exec == -1)
 		return (1);
 	if (exec == 0)
 	{
-		dir = which(data->args[0], data->_environ);
+		dir = _which(data->args[0], data->_environ);
 		if (check_error_cmd(dir, data) == 1)
 			return (1);
 	}

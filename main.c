@@ -18,9 +18,9 @@ void set_data(shell_d *data, char **av)
 
 	for (i = 0; environ[i]; i++)
 		;
-	data->_environ = malloc(sizeof(char) * (i + 1));
+	data->_environ = malloc(sizeof(char *) * (i + 1));
 	for (i = 0; environ[i]; i++)
-		data->_environ = _strdup(environ[i]);
+		data->_environ[i] = _strdup(environ[i]);
 	data->_environ[i] = NULL;
 	data->pid = aux_itoa(getpid());
 }

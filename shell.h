@@ -28,7 +28,7 @@ extern char **environ; /** environment variable**/
  * @_environ: environment variable
  * @pid: process ID of shell
  */
-typedef struct data
+typedef struct dat
 {
 	char **av;
 	char *input;
@@ -72,16 +72,16 @@ int _atoi(char *s);
 /** aux_str.c **/
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char s2);
+int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
-int _strspn(char *s, char accept);
+int _strspn(char *s, char *accept);
 
 /** aux_str2.c **/
 char *_strdup(const char *s);
 int _strlen(const char *str);
 
 /** aux_mem.c **/
-void _memcpy(void *dest, void *src, unsigned int size);
+void _memcpy(void *dest, const void *src, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
@@ -91,10 +91,14 @@ char *read_line(int *line);
 /** shell_loop.c **/
 void shell_loop(shell_d *datash);
 /** cmd_exec.c **/
-int check_error_cmd(char *dir, shell_d data);
+int check_error_cmd(char *dir, shell_d *data);
 int _executables(shell_d *data);
 int cmd_exec(shell_d *data);
 int is_cdir(char *path, int *i);
 char *_which(char *command, char **_environ);
+
+/** aux_environment.c **/
+char *_getenv(const char *name_env, char **_env);
+int comp_env(const char *name_env, const char *name);
 
 #endif
