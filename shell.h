@@ -15,6 +15,8 @@
 #include <sys/stat.h>
 
 #define BUFSIZE 1024
+#define TOK_SIZE 128
+#define TOK_DEL " \t\r\n\a"
 
 extern char **environ; /** environment variable**/
 
@@ -38,6 +40,17 @@ typedef struct dat
 	char **_environ;
 	char *pid;
 } shell_d;
+
+/**
+ * struct builtins - data structure for handling command arguments
+ * @name: built-in command name
+ * @f: function pointer
+ */
+typedef struct builtins
+{
+	char *name;
+	int (*f)(shell_d *data);
+} built_cmd;
 
 /**
  * struct lin_list - singly linked list to store command
@@ -100,5 +113,11 @@ char *_which(char *command, char **_environ);
 /** aux_environment.c **/
 char *_getenv(const char *name_env, char **_env);
 int comp_env(const char *name_env, const char *name);
+
+/** aux_split.c **/
+char **line_tok(char *input);
+
+/** sh_exit.c **/
+int sh_exit(shell_d *data);
 
 #endif
