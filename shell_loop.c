@@ -18,7 +18,7 @@ void shell_loop(shell_d *data)
 			if (input == NULL)
 				continue;
 			data->input = input;
-			loop = split_cmd(data, input);
+			loop = cmd_exec(data);
 			data->counter += 1;
 			free(input);
 		}

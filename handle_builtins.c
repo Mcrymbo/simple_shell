@@ -9,7 +9,7 @@ int (*get_builtin(char *command))(shell_d *)
 {
 	int i;
 
-	builtins_cmd builtin[] = {
+	builtin_cmd builtin[] = {
 		{"exit", sh_exit },
 		{ NULL, NULL}
 	};

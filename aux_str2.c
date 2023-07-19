@@ -7,15 +7,15 @@
  */
 char *_strdup(const char *s)
 {
-	char *ptr;
+	char *new;
 	size_t len;
 
 	len = _strlen(s);
-	ptr = malloc(sizeof(char *) * (len + 1));
-	if (ptr == NULL)
+	new = malloc(sizeof(char *) * (len + 1));
+	if (new == NULL)
 		return (NULL);
-	_memcpy(ptr, s, len + 1);
-	return (ptr);
+	_memcpy(new, s, len + 1);
+	return (new);
 }
 /**
  * _strlen - returns length of string
