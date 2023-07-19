@@ -10,7 +10,7 @@ int sh_exit(shell_d *data)
 	int is_dig, len, num;
 	unsigned int stat;
 
-	if (dat->args[i] != NULL)
+	if (data->args[1] != NULL)
 	{
 		stat = _atoi(data->args[1]);
 		is_dig = _isdigit(data->args[1]);

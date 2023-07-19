@@ -50,7 +50,7 @@ typedef struct builtins
 {
 	char *name;
 	int (*f)(shell_d *data);
-} built_cmd;
+} builtins_cmd;
 
 /**
  * struct lin_list - singly linked list to store command
@@ -92,6 +92,7 @@ int _strspn(char *s, char *accept);
 /** aux_str2.c **/
 char *_strdup(const char *s);
 int _strlen(const char *str);
+int _isdigit(const char *s);
 
 /** aux_mem.c **/
 void _memcpy(void *dest, const void *src, unsigned int size);
@@ -116,8 +117,15 @@ int comp_env(const char *name_env, const char *name);
 
 /** aux_split.c **/
 char **line_tok(char *input);
+int split_cmd(shell_d *data, char *input);
 
 /** sh_exit.c **/
 int sh_exit(shell_d *data);
+
+/** handle_builtin.c **/
+int (*get_builtin(char *command))(shell_d *);
+
+/** line_exec.c **/
+int line_exec(shell_d *data);
 
 #endif
