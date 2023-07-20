@@ -142,6 +142,9 @@ int sh_exit(shell_d *data);
 
  /** aux_split.c  **/
  int split_cmd(shell_d *data, char *input);
+ void add_node(sep_list **h_sep, line_list **h_line, char *input);
+ void go_next(sep_list **lst_s, line_list **lst_l, shell_d *data);
+ char *swap_char(char *input, int bool);
 
  /** handle_environ. c **/
   void env_check(var_r **h, char *input, shell_d *data);
@@ -152,5 +155,11 @@ int sh_exit(shell_d *data);
   /** var_list.c **/
   void free_varlist(var_r **h);
   var_r *add_var_node(var_r **h, int len_var, char *val, int len_val);
+
+  /** handle_list.c **/
+  sep_list *add_node_end_sep(sep_list **h, char s);
+  void free_seplist(sep_list **h);
+  line_list *add_node_end_line(line_list **h, char *input);
+  void free_linelist(line_list **h);
 
 #endif
