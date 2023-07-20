@@ -53,6 +53,21 @@ typedef struct builtins
 } builtin_cmd;
 
 /**
+ * struct var_list - sinply linked list to store variables
+ * @len_var: holds length of the variable
+ * @val: holds the value of variable
+ * @len_val: store length of val
+ * @next: next node
+ */
+typedef struct var_list
+{
+	int len_var;
+	char *val;
+	int len_val;
+	struct var_list *next;
+} var_r;
+
+/**
  * struct lin_list - singly linked list to store command
  * @line: command line
  * @next: next node
@@ -117,11 +132,25 @@ int comp_env(const char *name_env, const char *name);
 
 /** aux_split.c **/
 char **line_tok(char *input);
+int line_exec(shell_d *data);
 
 /** sh_exit.c **/
 int sh_exit(shell_d *data);
 
 /** handle_builtins.c **/
  int (*get_builtin(char *command))(shell_d *);
+
+ /** aux_split.c  **/
+ int split_cmd(shell_d *data, char *input);
+
+ /** handle_environ. c **/
+  void env_check(var_r **h, char *input, shell_d *data);
+  char *rep_var(char *input, shell_d *data);
+  char *replaced_input(var_r **h, char *input, char *new_input, int nlen);
+  int check_vars(var_r **h, char *input, char *status, shell_d *data);
+
+  /** var_list.c **/
+  void free_varlist(var_r **h);
+  var_r *add_var_node(var_r **h, int len_var, char *val, int len_val);
 
 #endif

@@ -31,7 +31,7 @@ void set_data(shell_d *data, char **av)
  */
 void free_d(shell_d *data)
 {
-	unsigned int i;
+	size_t i;
 
 	for (i = 0; data->_environ[i]; i++)
 		free(data->_environ[i]);

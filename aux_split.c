@@ -38,3 +38,20 @@ char **line_tok(char *input)
 	return (tkns);
 }
 
+/**
+ * split_cmd - splits commands
+ * @data: data structure
+ * @input: command
+ * Return: 0 to exit and 1 otherwise
+ */
+int split_cmd(shell_d *data, char *input)
+{
+	int loop;
+
+	data-> args= line_tok(data->input);
+	loop = line_exec(data);
+	free(data->args);
+	if (loop == 0)
+		return (0);
+	return (1);
+}

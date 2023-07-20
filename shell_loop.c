@@ -6,9 +6,10 @@
  */
 void shell_loop(shell_d *data)
 {
-	int line, loop = 1;
+	int loop, line;
 	char *input;
 
+	loop = 1;
 	while (loop == 1)
 	{
 		write(STDIN_FILENO, "$ ", 2);
@@ -17,8 +18,8 @@ void shell_loop(shell_d *data)
 		{
 			if (input == NULL)
 				continue;
-			data->input = input;
-			loop = cmd_exec(data);
+			input = rep_var(input, data);
+			loop = split_cmd(data, input);
 			data->counter += 1;
 			free(input);
 		}
