@@ -6,14 +6,17 @@
  * @src: source string
  * Return: dest
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, const char *src)
 {
-	unsigned int i, j;
+	int i, j;
 
-	for (i = 0; dest[i]; i++)
+	for (i = 0; dest[i] != '\0'; i++)
 		;
-	for (j = 0; src[j]; j++, i++)
+	for (j = 0; src[j] != '\0'; j++)
+	{
 		dest[i] = src[j];
+		i++;
+	}
 	dest[i] = '\0';
 	return (dest);
 }
@@ -25,9 +28,9 @@ char *_strcat(char *dest, char *src)
  */
 char *_strcpy(char *dest, char *src)
 {
-	unsigned int i;
+	size_t i;
 
-	for (i = 0; src[i]; i++)
+	for (i = 0; src[i] != '\0'; i++)
 		dest[i] = src[i];
 	dest[i] = '\0';
 	return (dest);
