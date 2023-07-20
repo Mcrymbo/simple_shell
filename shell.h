@@ -30,13 +30,13 @@ extern char **environ; /** environment variable**/
  * @_environ: environment variable
  * @pid: process ID of shell
  */
-typedef struct dat
+typedef struct data
 {
 	char **av;
 	char *input;
 	char **args;
-	int counter;
 	int status;
+	int counter;
 	char **_environ;
 	char *pid;
 } shell_d;
@@ -98,7 +98,7 @@ char *aux_itoa(int n);
 int _atoi(char *s);
 
 /** aux_str.c **/
-char *_strcat(char *dest, char *src);
+char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
@@ -121,7 +121,7 @@ char *read_line(int *line);
 void shell_loop(shell_d *datash);
 /** cmd_exec.c **/
 int check_error_cmd(char *dir, shell_d *data);
-int _executables(shell_d *data);
+int is_executables(shell_d *data);
 int cmd_exec(shell_d *data);
 int is_cdir(char *path, int *i);
 char *_which(char *command, char **_environ);
@@ -161,5 +161,8 @@ int sh_exit(shell_d *data);
   void free_seplist(sep_list **h);
   line_list *add_node_end_line(line_list **h, char *input);
   void free_linelist(line_list **h);
+
+  /** comment.c **/
+  char *comment(char *input);
 
 #endif

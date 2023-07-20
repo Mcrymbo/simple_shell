@@ -16,6 +16,7 @@ void shell_loop(shell_d *data)
 		input = read_line(&line);
 		if (line != -1)
 		{
+			input = comment(input);
 			if (input == NULL)
 				continue;
 			input = rep_var(input, data);

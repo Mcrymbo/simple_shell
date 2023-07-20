@@ -10,7 +10,7 @@ int comp_env(const char *name_env, const char *name)
 {
 	int len;
 
-	for ( len = 0; name_env[len] != '='; len++)
+	for (len = 0; name_env[len] != '='; len++)
 	{
 		if (name_env[len] != name[len])
 			return (0);

@@ -84,7 +84,7 @@ int check_error_cmd(char *dir, shell_d *data)
 	}
 	if (_strcmp(data->args[0], dir) != 0)
 	{
-		if (access(dir, X_OK) != -1)
+		if (access(dir, X_OK) == -1)
 		{
 			free(dir);
 			return (1);
@@ -106,7 +106,7 @@ int check_error_cmd(char *dir, shell_d *data)
  * @data: gives args from data structure
  * Return: 0 if not executables
  */
-int _executables(shell_d *data)
+int is_executables(shell_d *data)
 {
 	struct stat st;
 	char *input;
@@ -124,7 +124,7 @@ int _executables(shell_d *data)
 			else
 				break;
 		}
-		else if (input[i] == '.' && i != 0)
+		else if (input[i] == '/' && i != 0)
 		{
 			if (input[i + 1] == '.')
 				continue;
@@ -155,7 +155,7 @@ int cmd_exec(shell_d *data)
 	int exec;
 	(void) wait_pid;
 
-	exec = _executables(data);
+	exec = is_executables(data);
 	if (exec == -1)
 		return (1);
 	if (exec == 0)
@@ -172,8 +172,11 @@ int cmd_exec(shell_d *data)
 	}
 	else if (pd == 0)
 	{
-		dir = data->args[0];
-		execve(dir, data->args, data->_environ);
+		if (exec == 0)
+			dir = _which(data->args[0], data->_environ);
+		else
+			dir = data->args[0];
+		execve(dir + exec, data->args, data->_environ);
 	}
 	else
 	{
