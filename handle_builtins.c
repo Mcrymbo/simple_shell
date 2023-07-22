@@ -11,6 +11,7 @@ int (*get_builtin(char *command))(shell_d *)
 
 	builtin_cmd builtin[] = {
 		{"exit", sh_exit },
+		{"_env", _env},
 		{ NULL, NULL}
 	};
 
