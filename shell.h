@@ -108,6 +108,7 @@ int _strspn(char *s, char *accept);
 char *_strdup(const char *s);
 int _strlen(const char *str);
 int _isdigit(const char *s);
+ char *_strtok(char *str, const char *delim);
 
 /** aux_mem.c **/
 void _memcpy(void *dest, const void *src, unsigned int size);

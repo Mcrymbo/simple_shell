@@ -80,6 +80,7 @@ int check_error_cmd(char *dir, shell_d *data)
 {
 	if (dir == NULL)
 	{
+		handle_error(data, 127);
 		return (1);
 	}
 	if (_strcmp(data->args[0], dir) != 0)

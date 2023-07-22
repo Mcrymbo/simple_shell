@@ -18,7 +18,7 @@ char **line_tok(char *input)
 		perror("Erro:");
 		exit(EXIT_FAILURE);
 	}
-	tkn = strtok(input, TOK_DEL);
+	tkn = _strtok(input, TOK_DEL);
 	tkns[0] = tkn;
 	for (i = 1; tkn != NULL; i++)
 	{
@@ -32,7 +32,7 @@ char **line_tok(char *input)
 				exit(EXIT_FAILURE);
 			}
 		}
-		tkn = strtok(NULL, TOK_DEL);
+		tkn = _strtok(NULL, TOK_DEL);
 		tkns[i] = tkn;
 	}
 	return (tkns);
@@ -99,11 +99,11 @@ void add_node(sep_list **h_sep, line_list **h_line, char *input)
 			i++;
 		}
 	}
-	in = strtok(input, ";|&");
+	in = _strtok(input, ";|&");
 	do {
 		in = swap_char(in, 1);
 		add_node_end_line(h_line, in);
-		in = strtok(NULL, ";|&");
+		in = _strtok(NULL, ";|&");
 	} while (in != NULL);
 }
 
@@ -191,8 +191,3 @@ char *swap_char(char *input, int bool)
 	}
 	return (input);
 }
-
-
-
-
-
