@@ -1,0 +1,6 @@
+# specifying EMACS buffer files to ignore
+*#
+*~
+
+# specifying Executable files to ignore
+*.out
