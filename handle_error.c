@@ -151,6 +151,8 @@ char handle_error(shell_d *data, int val)
 		case 127:
 			error = cmd_not_found(data);
 			break;
+		case 126:
+			error = denied_perm(data);
 		case 2:
 			if (_strcmp("exit", data->args[0]) == 0)
 				error = exit_error(data);
