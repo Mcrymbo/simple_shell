@@ -194,4 +194,16 @@ int sh_exit(shell_d *data);
    /** aux_str_rev.c **/
    void str_rev(char *str);
 
+   /** env_error.c **/
+   char *denied_perm(shell_d *data);
+   char *env_error(shell_d *data);
+
+   /** handle_syntax_error.c **/
+   int syntax_error_check(shell_d *data, char *input);
+   int error_sep(char *input, int i, char lchar);
+   int char_repeated(char *input, int i);
+   void syntax_error_print(shell_d *data, char *input, int i, int bool);
+   int f_char(char *input, int *i);
+
+
 #endif

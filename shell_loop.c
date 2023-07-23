@@ -17,6 +17,13 @@ void shell_loop(shell_d *data)
 		if (line != -1)
 		{
 			input = comment(input);
+
+			if (syntax_error_check(data , input) == 1)
+			{
+				free(input);
+				data->status = 2;
+				continue;
+			}
 			if (input == NULL)
 				continue;
 			input = rep_var(input, data);
