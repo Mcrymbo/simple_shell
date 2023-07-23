@@ -13,7 +13,7 @@ char *exit_error(shell_d *data)
 
 	cnt = aux_itoa(data->counter);
 	len = _strlen(data->av[0]) + _strlen(cnt);
-	len += _strlen(data->args[0]) + _strlen(args[1]) + 23;
+	len += _strlen(data->args[0]) + _strlen(data->args[1]) + 23;
 	error = malloc(sizeof(char *) * (len + 1));
 	if (error == NULL)
 	{
@@ -58,7 +58,7 @@ char *cmd_not_found(shell_d * data)
 	_strcat(error, ": ");
 	_strcat(error, data->args[0]);
 	_strcat(error, ": not found\n");
-	_strcat(error, '\0');
+	_strcat(error, "\0");
 	free(cnt);
 	return (error);
 }
@@ -76,7 +76,7 @@ char *get_cd_error(shell_d *data)
 	int len;
 	int len_d;
 
-	if (data->args[i][0] == '-')
+	if (data->args[1][0] == '-')
 	{
 		len_d = 2;
 		msg = ": Invalid option ";
@@ -131,8 +131,8 @@ char *concat_cd_error(shell_d *data, char *msg, char *error, char *cnt)
 	}
 	else
 		_strcat(error, data->args[1]);
-	_strcat(error, '\n');
-	_strcat(error, '\0');
+	_strcat(error, "\n");
+	_strcat(error, "\0");
 	return (error);
 }
 
@@ -149,7 +149,7 @@ char handle_error(shell_d *data, int val)
 	switch (val)
 	{
 		case 127:
-			erro = cmd_not_found(data);
+			error = cmd_not_found(data);
 			break;
 		case 2:
 			if (_strcmp("exit", data->args[0]) == 0)
@@ -158,7 +158,7 @@ char handle_error(shell_d *data, int val)
 				error = get_cd_error(data);
 			break;
 	}
-	if (erro != NULL)
+	if (error != NULL)
 	{
 		write(2, error, _strlen(error));
 		free(error);

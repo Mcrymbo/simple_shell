@@ -20,7 +20,8 @@ int sh_exit(shell_d *data)
 		{
 			data->status = 2;
 			return (1);
-		}data->status = (stat % 256);
+		}
+		data->status = (stat % 256);
 	}
 	return (0);
 }

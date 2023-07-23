@@ -166,4 +166,21 @@ int sh_exit(shell_d *data);
   /** comment.c **/
   char *comment(char *input);
 
+  /** handle_error.c **/
+   char *exit_error(shell_d *data);
+   char *cmd_not_found(shell_d * data);
+   char *get_cd_error(shell_d *data);
+   char *concat_cd_error(shell_d *data, char *msg, char *error, char *cnt);
+   char handle_error(shell_d *data, int val);
+
+   /** _getline.c **/
+   ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
+   /** environ.c **/
+   int _env(shell_d *data);
+   int _setenv(shell_d *data);
+   void env_set(char *name, char *val, shell_d *data);
+   char *infocpy(char *name, char *val);
+   int _unsetenv(shell_d *data);
+
 #endif
