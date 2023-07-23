@@ -14,6 +14,7 @@ int (*get_builtin(char *command))(shell_d *)
 		{"env", _env},
 		{"setenv", _setenv},
 		{"unsetenv", _unsetenv},
+		{"cd", _cd},
 		{ NULL, NULL}
 	};
 
