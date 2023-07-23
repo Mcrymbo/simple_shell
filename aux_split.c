@@ -126,7 +126,7 @@ void go_next(sep_list **lst_s, line_list **lst_l, shell_d *data)
 	{
 		if (data->status == 0)
 		{
-			if (ls_s->sep ==';' || ls_s->sep == '&')
+			if (ls_s->sep == ';' || ls_s->sep == '&')
 				loop = 0;
 			if (ls_s->sep == '|')
 			{
@@ -163,7 +163,7 @@ char *swap_char(char *input, int bool)
 
 	if (bool == 0)
 	{
-		for (i = 0; input[i] == '&'; i++)
+		for (i = 0; input[i]; i++)
 		{
 			if (input[i] == '&')
 			{

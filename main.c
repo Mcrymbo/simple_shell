@@ -47,14 +47,17 @@ void free_d(shell_d *data)
  */
 int main(int ac, char **av)
 {
-	shell_d data;
-	(void) ac;
+	if (ac == 1)
+	{
+		shell_d data;
 
-	signal(SIGINT, get_sigint);
-	set_data(&data, av);
-	shell_loop(&data);
-	free_d(&data);
-	if (data.status < 0)
-		return (255);
-	return (data.status);
+		signal(SIGINT, get_sigint);
+		set_data(&data, av);
+		shell_loop(&data);
+		free_d(&data);
+		if (data.status < 0)
+			return (255);
+		return (data.status);
+	}
+	return (0);
 }

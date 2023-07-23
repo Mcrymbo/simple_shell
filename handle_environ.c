@@ -8,13 +8,12 @@
  */
 void env_check(var_r **h, char *input, shell_d *data)
 {
+	int i, chr, j, val;
 	char **_envr;
-	int j, chr, i, val;
-
 	_envr = data->_environ;
-	for (i = 0;_envr[i]; i++)
+	for (i = 0; _envr[i]; i++)
 	{
-		for (j = 1, i = 0; _envr[i][chr]; chr++)
+		for (j = 1, chr = 0; _envr[i][chr]; chr++)
 		{
 			if (_envr[i][chr] == '=')
 			{
@@ -30,7 +29,7 @@ void env_check(var_r **h, char *input, shell_d *data)
 	}
 	for (j = 0; input[j]; j++)
 	{
-		if (input[j] == ' ' || input[j] == ';' || input[j] == '\n' || input[j] == '\t')
+		if (input[j] == ' ' || input[j] == '\t' || input[j] == ';' || input[j] == '\n')
 			break;
 	}
 	add_var_node(h, j, NULL, 0);
@@ -155,7 +154,7 @@ int check_vars(var_r **h, char *input, char *status, shell_d *data)
 			else if (input[i + 1] == '\t')
 				add_var_node(h, 0, NULL, 0);
 			else
-				env_check(h, input + 1, data);
+				env_check(h, input + i, data);
 		}
 	}
 	return (i);

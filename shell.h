@@ -183,4 +183,15 @@ int sh_exit(shell_d *data);
    char *infocpy(char *name, char *val);
    int _unsetenv(shell_d *data);
 
+   /** aux_cd.c **/
+   void cd_dot(shell_d *data);
+   void cd_dot_dot(shell_d *data);
+   void cd_to(shell_d *data);
+   void cd_home(shell_d *data);
+   /** cd.c **/
+   int _cd(shell_d *data);
+
+   /** aux_str_rev.c **/
+   void str_rev(char *str);
+
 #endif
