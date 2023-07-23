@@ -159,6 +159,8 @@ char handle_error(shell_d *data, int val)
 			else if (_strcmp("cd", data->args[0]) == 0)
 				error = get_cd_error(data);
 			break;
+		case -1:
+			error = env_error(data);
 	}
 	if (error != NULL)
 	{
