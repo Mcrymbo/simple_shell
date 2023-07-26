@@ -153,6 +153,7 @@ char handle_error(shell_d *data, int val)
 			break;
 		case 126:
 			error = denied_perm(data);
+			break;
 		case 2:
 			if (_strcmp("exit", data->args[0]) == 0)
 				error = exit_error(data);

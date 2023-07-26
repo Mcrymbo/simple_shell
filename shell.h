@@ -89,6 +89,19 @@ typedef struct sep_lis
 	struct sep_lis *next;
 } sep_list;
 
+/**
+ * struct alias_e - holding alias entries
+ * @name: name of alias
+ * @command: command associated with alias
+ * @next: next alias
+ */
+typedef struct alias_e
+{
+	char *name;
+	char *command;
+	struct alias_e *next;
+} Alias;
+
 /** get_sigint.c **/
 void get_sigint(int sig);
 
@@ -205,5 +218,7 @@ int sh_exit(shell_d *data);
    void syntax_error_print(shell_d *data, char *input, int i, int bool);
    int f_char(char *input, int *i);
 
+   /** handle_alias.c **/
+   int _alias(shell_d *datash);
 
 #endif
