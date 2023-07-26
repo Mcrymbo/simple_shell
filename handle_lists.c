@@ -3,7 +3,7 @@
 /**
  * add_node_end_sep - add nodes and end of seplist
  * @h: head node
- * @s; separator
+ * @s: separator
  * Return: addree of head node
  */
 sep_list *add_node_end_sep(sep_list **h, char s)

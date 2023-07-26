@@ -59,7 +59,7 @@ int split_cmd(shell_d *data, char *input)
 	while (lst_l != NULL)
 	{
 		data->input = lst_l->line;
-		data-> args= line_tok(data->input);
+		data->args = line_tok(data->input);
 		loop = line_exec(data);
 		free(data->args);
 
