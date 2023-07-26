@@ -95,12 +95,12 @@ typedef struct sep_lis
  * @command: command associated with alias
  * @next: next alias
  */
-typedef struct alias_e
+/**typedef struct alias_
 {
 	char *name;
 	char *command;
 	struct alias_e *next;
-} Alias;
+} Alias;**/
 
 /** get_sigint.c **/
 void get_sigint(int sig);
