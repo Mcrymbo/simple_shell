@@ -89,19 +89,6 @@ typedef struct sep_lis
 	struct sep_lis *next;
 } sep_list;
 
-/**
- * struct alias_e - holding alias entries
- * @name: name of alias
- * @command: command associated with alias
- * @next: next alias
- */
-/**typedef struct alias_
-{
-	char *name;
-	char *command;
-	struct alias_e *next;
-} Alias;**/
-
 /** get_sigint.c **/
 void get_sigint(int sig);
 
