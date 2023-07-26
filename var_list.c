@@ -43,7 +43,7 @@ void free_varlist(var_r **h)
 	if (h)
 	{
 		cur = *h;
-		while((temp = cur) != NULL)
+		while ((temp = cur) != NULL)
 		{
 			cur = cur->next;
 			free(temp);

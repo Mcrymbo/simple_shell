@@ -14,5 +14,5 @@ int line_exec(shell_d *data)
 	builtin = get_builtin(data->args[0]);
 	if (builtin != NULL)
 		return (builtin(data));
-	return(cmd_exec(data));
+	return (cmd_exec(data));
 }

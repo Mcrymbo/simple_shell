@@ -2,7 +2,7 @@
 
 /**
  * set_data - initializes the data required for shell data
- * @datash: data structure
+ * @data: data structure
  * @av: argument vector
  * Return: no return
  */
@@ -25,8 +25,8 @@ void set_data(shell_d *data, char **av)
 	data->pid = aux_itoa(getpid());
 }
 /**
- * free-data - frees data structure
- * @datash: data structure
+ * free_d - frees data structure
+ * @data: data structure
  * Return: no return
  */
 void free_d(shell_d *data)

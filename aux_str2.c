@@ -2,7 +2,7 @@
 
 /**
  * _strdup - dublicates string in the heap memory
- * @str: string to dublicate
+ * @s: string to dublicate
  * Return: duplicated string
  */
 char *_strdup(const char *s)

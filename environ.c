@@ -23,7 +23,7 @@ int  _env(shell_d *data)
 /**
  * _setenv - update or add environment variable
  * @data: data structure (name and val)
- * Return : 1 if success
+ * Return: 1 if success
  */
 int _setenv(shell_d *data)
 {
@@ -61,7 +61,7 @@ void env_set(char *name, char *val, shell_d *data)
 		}
 		free(env_var);
 	}
-	data->_environ = _reallocdp(data->_environ, i,sizeof(char) * (i + 2));
+	data->_environ = _reallocdp(data->_environ, i, sizeof(char) * (i + 2));
 	data->_environ[i] = infocpy(name, val);
 	data->_environ[i + 1] = NULL;
 }
@@ -125,7 +125,8 @@ int _unsetenv(shell_d *data)
 		if (i != a)
 		{
 			new_env[j] = data->_environ[i];
-			j++;}
+			j++;
+		}
 	}
 	new_env[j] = NULL;
 	free(data->_environ[a]);

@@ -28,17 +28,17 @@ char *exit_error(shell_d *data)
 	_strcat(error, ": Invalid number: ");
 	_strcat(error, data->args[0]);
 	_strcat(error, "\n\0");
-	free (cnt);
+	free(cnt);
 
-	return(error);
+	return (error);
 }
 
 /**
  * cmd_not_found - generates error message for command not found
- * @dat: data structure (args, av, and counter)
+ * @data: data structure (args, av, and counter)
  * Return: Error
  */
-char *cmd_not_found(shell_d * data)
+char *cmd_not_found(shell_d *data)
 {
 	char *error;
 	char *cnt;

@@ -2,7 +2,7 @@
 
 /**
  * _memcpy - copies information between void pointers
- * @des: destination pointer
+ * @dest: destination pointer
  * @src: soirce pointer
  * @size: size of dest pointer
  */

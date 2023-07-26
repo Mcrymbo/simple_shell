@@ -3,7 +3,7 @@
 /**
  * comp_env - comparing names of environment variables
  * @name_env: name of environment variable
- * name:  variable passed
+ * @name:  variable passed
  * Return: 0 if names are not similar, another number otherwise
  */
 int comp_env(const char *name_env, const char *name)

@@ -3,13 +3,14 @@
 /**
  * env_check - checks if a typed command ia an env variable
  * @h: first node of linked list
- * @input: input string
+ * @inp: input string
  * @data: required is _environment
  */
-void env_check(var_r **h, char *input, shell_d *data)
+void env_check(var_r **h, char *inp, shell_d *data)
 {
 	int i, chr, j, val;
 	char **_envr;
+
 	_envr = data->_environ;
 	for (i = 0; _envr[i]; i++)
 	{
@@ -21,15 +22,15 @@ void env_check(var_r **h, char *input, shell_d *data)
 				add_var_node(h, j, _envr[i] + chr + 1, val);
 				return;
 			}
-			if (input[j] == _envr[i][chr])
+			if (inp[j] == _envr[i][chr])
 				j++;
 			else
 				break;
 		}
 	}
-	for (j = 0; input[j]; j++)
+	for (j = 0; inp[j]; j++)
 	{
-		if (input[j] == ' ' || input[j] == '\t' || input[j] == ';' || input[j] == '\n')
+		if (inp[j] == ' ' || inp[j] == '\t' || inp[j] == ';' || inp[j] == '\n')
 			break;
 	}
 	add_var_node(h, j, NULL, 0);
@@ -76,7 +77,7 @@ char *rep_var(char *input, shell_d *data)
  * @h: fhead of li nked list
  * @input: input string
  * @new_input: replaced input
- * nlen: replaced length
+ * @nlen: replaced length
  * Return: new_input
  */
 char *replaced_input(var_r **h, char *input, char *new_input, int nlen)
@@ -102,7 +103,7 @@ char *replaced_input(var_r **h, char *input, char *new_input, int nlen)
 			}
 			else
 			{
-				for (k =0; k < index->len_val; k++)
+				for (k = 0; k < index->len_val; k++)
 				{
 					new_input[i] = index->val[k];
 					i++;
@@ -142,7 +143,7 @@ int check_vars(var_r **h, char *input, char *status, shell_d *data)
 			if (input[i + 1] == '$')
 				add_var_node(h, 2, data->pid, lpid), i++;
 			else if (input[i + 1] == '?')
-				add_var_node(h, 2,status, lstat), i++;
+				add_var_node(h, 2, status, lstat), i++;
 			else if (input[i + 1] == '\0')
 				add_var_node(h, 0, NULL, 0);
 			else if (input[i + 1] == '\n')

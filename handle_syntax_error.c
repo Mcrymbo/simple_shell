@@ -52,7 +52,7 @@ int error_sep(char *input, int i, char lchar)
 			return (i);
 		if (lchar == '&')
 		{
-			cnt = char_repeated(input,0);
+			cnt = char_repeated(input, 0);
 			if (cnt == 0 || cnt > 1)
 				return (i);
 		}
@@ -74,6 +74,7 @@ int error_sep(char *input, int i, char lchar)
 /**
  * char_repeated - captures number of repetitions in a char
  * @input: input string
+ * @i: index
  * Return: number of repetitions
  */
 int char_repeated(char *input, int i)

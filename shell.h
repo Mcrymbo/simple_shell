@@ -121,7 +121,7 @@ int _strspn(char *s, char *accept);
 char *_strdup(const char *s);
 int _strlen(const char *str);
 int _isdigit(const char *s);
- char *_strtok(char *str, const char *delim);
+char *_strtok(char *str, const char *delim);
 
 /** aux_mem.c **/
 void _memcpy(void *dest, const void *src, unsigned int size);
@@ -152,73 +152,72 @@ int line_exec(shell_d *data);
 int sh_exit(shell_d *data);
 
 /** handle_builtins.c **/
- int (*get_builtin(char *command))(shell_d *);
+int (*get_builtin(char *command))(shell_d *);
 
- /** aux_split.c  **/
- int split_cmd(shell_d *data, char *input);
- void add_node(sep_list **h_sep, line_list **h_line, char *input);
- void go_next(sep_list **lst_s, line_list **lst_l, shell_d *data);
- char *swap_char(char *input, int bool);
+/** aux_split.c  **/
+int split_cmd(shell_d *data, char *input);
+void add_node(sep_list **h_sep, line_list **h_line, char *input);
+void go_next(sep_list **lst_s, line_list **lst_l, shell_d *data);
+char *swap_char(char *input, int bool);
 
- /** handle_environ. c **/
-  void env_check(var_r **h, char *input, shell_d *data);
-  char *rep_var(char *input, shell_d *data);
-  char *replaced_input(var_r **h, char *input, char *new_input, int nlen);
-  int check_vars(var_r **h, char *input, char *status, shell_d *data);
+/** handle_environ. c **/
+void env_check(var_r **h, char *input, shell_d *data);
+char *rep_var(char *input, shell_d *data);
+char *replaced_input(var_r **h, char *input, char *new_input, int nlen);
+int check_vars(var_r **h, char *input, char *status, shell_d *data);
 
-  /** var_list.c **/
-  void free_varlist(var_r **h);
-  var_r *add_var_node(var_r **h, int len_var, char *val, int len_val);
+/** var_list.c **/
+void free_varlist(var_r **h);
+var_r *add_var_node(var_r **h, int len_var, char *val, int len_val);
 
-  /** handle_list.c **/
-  sep_list *add_node_end_sep(sep_list **h, char s);
-  void free_seplist(sep_list **h);
-  line_list *add_node_end_line(line_list **h, char *input);
-  void free_linelist(line_list **h);
+/** handle_list.c **/
+sep_list *add_node_end_sep(sep_list **h, char s);
+void free_seplist(sep_list **h);
+line_list *add_node_end_line(line_list **h, char *input);
+void free_linelist(line_list **h);
 
-  /** comment.c **/
-  char *comment(char *input);
+/** comment.c **/
+char *comment(char *input);
+/** handle_error.c **/
+char *exit_error(shell_d *data);
+char *cmd_not_found(shell_d *data);
+char *get_cd_error(shell_d *data);
+char *concat_cd_error(shell_d *data, char *msg, char *error, char *cnt);
+char handle_error(shell_d *data, int val);
 
-  /** handle_error.c **/
-   char *exit_error(shell_d *data);
-   char *cmd_not_found(shell_d * data);
-   char *get_cd_error(shell_d *data);
-   char *concat_cd_error(shell_d *data, char *msg, char *error, char *cnt);
-   char handle_error(shell_d *data, int val);
+/** _getline.c **/
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
-   /** _getline.c **/
-   ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+/** environ.c **/
+int _env(shell_d *data);
+int _setenv(shell_d *data);
+void env_set(char *name, char *val, shell_d *data);
+char *infocpy(char *name, char *val);
+int _unsetenv(shell_d *data);
 
-   /** environ.c **/
-   int _env(shell_d *data);
-   int _setenv(shell_d *data);
-   void env_set(char *name, char *val, shell_d *data);
-   char *infocpy(char *name, char *val);
-   int _unsetenv(shell_d *data);
+/** aux_cd.c **/
+void cd_dot(shell_d *data);
+void cd_dot_dot(shell_d *data);
+void cd_to(shell_d *data);
+void cd_home(shell_d *data);
 
-   /** aux_cd.c **/
-   void cd_dot(shell_d *data);
-   void cd_dot_dot(shell_d *data);
-   void cd_to(shell_d *data);
-   void cd_home(shell_d *data);
-   /** cd.c **/
-   int _cd(shell_d *data);
+/** cd.c **/
+int _cd(shell_d *data);
+/** aux_str_rev.c **/
+void str_rev(char *str);
 
-   /** aux_str_rev.c **/
-   void str_rev(char *str);
+/** env_error.c **/
+char *denied_perm(shell_d *data);
+char *env_error(shell_d *data);
 
-   /** env_error.c **/
-   char *denied_perm(shell_d *data);
-   char *env_error(shell_d *data);
+/** handle_syntax_error.c **/
+int syntax_error_check(shell_d *data, char *input);
+int error_sep(char *input, int i, char lchar);
+int char_repeated(char *input, int i);
+void syntax_error_print(shell_d *data, char *input, int i, int bool);
+int f_char(char *input, int *i);
 
-   /** handle_syntax_error.c **/
-   int syntax_error_check(shell_d *data, char *input);
-   int error_sep(char *input, int i, char lchar);
-   int char_repeated(char *input, int i);
-   void syntax_error_print(shell_d *data, char *input, int i, int bool);
-   int f_char(char *input, int *i);
-
-   /** handle_alias.c **/
-   int _alias(shell_d *datash);
+/** handle_alias.c **/
+int _alias(shell_d *datash);
 
 #endif

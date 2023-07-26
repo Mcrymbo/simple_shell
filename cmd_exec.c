@@ -33,8 +33,7 @@ char *_which(char *command, char **_environ)
 	if (path)
 	{
 		i = 0;
-		path_ptr = _strdup(path);
-		len_cm = _strlen(command);
+		path_ptr = _strdup(path), len_cm = _strlen(command);
 		tkn = strtok(path_ptr, ":");
 		while (tkn)
 		{
@@ -45,10 +44,8 @@ char *_which(char *command, char **_environ)
 			}
 			len_d = _strlen(tkn);
 			dir = malloc(len_d + len_cm + 2);
-			_strcpy(dir, tkn);
-			_strcat(dir, "/");
-			_strcat(dir, command);
-			_strcat(dir, "\0");
+			_strcpy(dir, tkn), _strcat(dir, "/");
+			_strcat(dir, command), _strcat(dir, "\0");
 			if (stat(dir, &st) == 0)
 			{
 				free(path_ptr);
@@ -101,9 +98,8 @@ int check_error_cmd(char *dir, shell_d *data)
 	}
 	return (0);
 }
-
 /**
- * _executable - determines if the command passed is executable
+ * is_executables - determines if the command passed is executable
  * @data: gives args from data structure
  * Return: 0 if not executables
  */
@@ -149,11 +145,9 @@ int is_executables(shell_d *data)
  */
 int cmd_exec(shell_d *data)
 {
-	pid_t pd;
-	int state;
+	pid_t pd, wait_pid;
+	int state, exec;
 	char *dir;
-	pid_t wait_pid;
-	int exec;
 	(void) wait_pid;
 
 	exec = is_executables(data);

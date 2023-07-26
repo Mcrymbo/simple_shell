@@ -2,7 +2,7 @@
 
 /**
  * get_builtin - handle builtins eg. exit, cd, env
- * @command builtin command
+ * @command: builtin command
  * Return: function pointer to the command
  */
 int (*get_builtin(char *command))(shell_d *)

@@ -2,7 +2,7 @@
 
 /**
  * shell_loop - loops the shell
- * @datash: data structure
+ * @data: data structure
  */
 void shell_loop(shell_d *data)
 {
@@ -18,10 +18,9 @@ void shell_loop(shell_d *data)
 		{
 			input = comment(input);
 
-			if (syntax_error_check(data , input) == 1)
+			if (syntax_error_check(data, input) == 1)
 			{
-				free(input);
-				data->status = 2;
+				free(input), data->status = 2;
 				continue;
 			}
 			if (input == NULL)
