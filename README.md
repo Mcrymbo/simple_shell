@@ -166,11 +166,3 @@ Example
 
 ## Author and Copyright
 * Alphonce Mcrymbo <[Mcrymbo] (https://github.com/Mcrymbo)>
-
-##### **END **
-
-
-
-
-
-
