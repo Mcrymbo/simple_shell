@@ -186,7 +186,7 @@ char *concat_cd_error(shell_d *data, char *msg, char *error, char *cnt);
 char handle_error(shell_d *data, int val);
 
 /** _getline.c **/
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+/**ssize_t _getline(char **lineptr, size_t *n, FILE *stream);**/
 
 /** environ.c **/
 int _env(shell_d *data);
